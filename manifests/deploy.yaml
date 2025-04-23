@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: m-scheduler-extender
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: m-scheduler-extender
+  template:
+    metadata:
+      labels:
+        app: m-scheduler-extender
+    spec:
+      serviceAccountName: m-scheduler-extender
+      containers:
+        - name: extender
+          image: ccr.ccs.tencentyun.com/mervynwang/m-scheduler-extender:v1.0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8010
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: m-scheduler-extender
+  namespace: default
+spec:
+  selector:
+    app: m-scheduler-extender
+  ports:
+    - protocol: TCP
+      port: 8010
+      targetPort: 8010

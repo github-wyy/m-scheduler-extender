@@ -1,0 +1,16 @@
+# FILEPATH:/Users/yangyang/go/src/github.com/github-wyy/m-scheduler-extender/deploy/scheduler-config.yaml
+apiVersion: kubescheduler.config.k8s.io/v1beta3
+kind: KubeSchedulerConfiguration
+clientConnection:
+  kubeconfig: "/etc/kubernetes/scheduler.conf"
+extenders:
+  #- urlPrefix: "https://m-scheduler-extender.default.svc.cluster.local:8010"
+  - urlPrefix: "https://cls-c62de69k-apiserver-service:60002/api/v1/namespaces/default/services/m-scheduler-extender:8010/proxy"
+    filterVerb: "scheduler/filter"
+    prioritizeVerb: "scheduler/score"
+    tlsConfig:
+      caFile: /etc/kubernetes/files/scheduler/cluster.crt
+      certFile: /etc/kubernetes/files/scheduler/scheduler.crt
+      keyFile: /etc/kubernetes/files/scheduler/scheduler.key
+    weight: 1
+    ignorable: true
