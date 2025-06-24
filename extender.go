@@ -24,6 +24,7 @@ func filterHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	klog.Infof("doFilter: pod: %v", args.Pod.Name)
 	filteredNodes := doFilter(args.Pod, args.Nodes)
 	result := &schedulerextapi.ExtenderFilterResult{
 		Nodes: filteredNodes,
@@ -41,6 +42,7 @@ func scoreHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	klog.Infof("doScore: pod: %v", args.Pod.Name)
 	priorityList := make(schedulerextapi.HostPriorityList, 0, len(args.Nodes.Items))
 	for _, node := range args.Nodes.Items {
 		priorityList = append(priorityList, schedulerextapi.HostPriority{

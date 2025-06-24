@@ -16,7 +16,7 @@ spec:
       serviceAccountName: m-scheduler-extender
       containers:
         - name: extender
-          image: ccr.ccs.tencentyun.com/mervynwang/m-scheduler-extender:v1.0.1
+          image: ccr.ccs.tencentyun.com/mervynwang/m-scheduler-extender:v1.0.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8010

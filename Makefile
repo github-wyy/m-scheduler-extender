@@ -1,8 +1,7 @@
 # FILEPATH: /Users/yangyang/go/src/github.com/github-wyy/m-scheduler-extender/Makefile
 # 定义变量
 IMAGE_NAME ?= ccr.ccs.tencentyun.com/mervynwang/m-scheduler-extender
-IMAGE_TAG ?= v1.0.1
-PORT ?= 8010
+IMAGE_TAG ?= v1.0.2
 
 .PHONY: build docker-build docker-push deploy undeploy test clean help
 
