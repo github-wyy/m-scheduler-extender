@@ -39,8 +39,8 @@ func main() {
 		klog.Info("Starting HTTPS server on :8443")
 
 		// ssl
-		certFile := "./ssl/cert.pem"
-		keyFile := "./ssl/key.pem"
+		certFile := "/app/ssl/cert.pem"
+		keyFile := "/app/ssl/key.pem"
 
 		tlsConfig := &tls.Config{
 			// ClientAuth 表示程序作为服务端时要不要验证客户端证书，
